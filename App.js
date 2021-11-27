@@ -1,13 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function App() {
   return (
+    <ScrollView style={styles.scrollView}>
     <View style={styles.container}>
-          <Text style={styles.text}>This is Carlos editing App.js and getting it to build successfully on an iOs app simulator using Xcode and React Native. He is very proud.</Text>
+          <Text style={styles.text}>This is Carlos editing App.js and getting it to build successfully on an iOs app simulator using Xcode and React Native. He is very proud.
+          </Text>
+          <Text></Text>
+          <Text style={styles.text}>Try to scroll.</Text>
+          <Text></Text>
+          <Text style={styles.text}>Cool, right?</Text>
       <StatusBar style="auto" />
     </View>
+    </ScrollView>
   );
 }
 
@@ -41,6 +48,9 @@ const styles = StyleSheet.create({
             height: 3
         },
         textShadowColor: 'grey',
-        textShadowRadius: 2
+        textShadowRadius: 2,
     },
+scrollView: {
+    paddingTop: 80
+}
 });
