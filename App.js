@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, Pressable } from 'react-native';
 
 export default function App() {
   return (
@@ -12,6 +12,11 @@ export default function App() {
           <Text style={styles.text}>Try to scroll.</Text>
           <Text></Text>
           <Text style={styles.text}>Cool, right?</Text>
+          <Text></Text>
+          <Text style={styles.text}>Now, press {'this'} button</Text>
+          <Pressable style={styles.button}>
+            <Button style={styles.buttonText} title="Press it..."/>
+          </Pressable>
       <StatusBar style="auto" />
     </View>
     </ScrollView>
@@ -25,10 +30,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 3,
-    maxHeight: 300,
+    maxHeight: 400,
     maxWidth: '80%',
     alignSelf: 'center',
     padding: 50,
+    paddingTop: 80,
+    paddingBottom:80,
     marginTop: 'auto',
     marginBottom: 'auto',
     borderRadius: 10,
@@ -50,7 +57,18 @@ const styles = StyleSheet.create({
         textShadowColor: 'grey',
         textShadowRadius: 2,
     },
-scrollView: {
-    paddingTop: 80
-}
+    scrollView: {
+        paddingTop: 80,
+    },
+    button: {
+        backgroundColor: 'brown',
+        padding: 10,
+        borderRadius: 10,
+        marginTop: 20,
+        opacity: .5
+    },
+    buttonText: {
+        fontSize: 10
+    }
+    
 });
