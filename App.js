@@ -1,8 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 import { StyleSheet, Text, View, ScrollView, Button, Pressable } from 'react-native';
 
 export default function App() {
+    
+    const [buttonPressed, setButtonPressed] = useState(null)
+    const [buttonPressString, setButtonPressString] = useState('')
+    
+    const handleButtonPress = () => {
+        setButtonPressString('Wow, a button that does something!')
+    }
+    
+    
   return (
     <ScrollView style={styles.scrollView}>
     <View style={styles.container}>
@@ -14,9 +23,11 @@ export default function App() {
           <Text style={styles.text}>Cool, right?</Text>
           <Text></Text>
           <Text style={styles.text}>Now, press {'this'} button</Text>
-          <Pressable style={styles.button}>
-            <Button style={styles.buttonText} title="Press it..."/>
+          <Pressable style={styles.button} >
+          <Button style={styles.buttonText} title="Press it..." onPress={handleButtonPress}/>
           </Pressable>
+          <Text></Text>
+          <Text style={styles.text}>{buttonPressString}</Text>
       <StatusBar style="auto" />
     </View>
     </ScrollView>
@@ -30,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 3,
-    maxHeight: 400,
+    maxHeight: 500,
     maxWidth: '80%',
     alignSelf: 'center',
     padding: 50,
@@ -65,7 +76,13 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         marginTop: 20,
-        opacity: .5
+        opacity: .5,
+        shadowColor: 'grey',
+        shadowOffset: {
+            width: 5,
+            height: 5
+        },
+        shadowOpacity: .4,
     },
     buttonText: {
         fontSize: 10
