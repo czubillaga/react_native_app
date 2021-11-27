@@ -1,14 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect }from 'react';
-import { StyleSheet, Text, View, ScrollView, Button, Pressable } from 'react-native';
+import React, { useState, useEffect, useRef }from 'react';
+import { StyleSheet, Text, View, ScrollView, Button, Pressable, Animated } from 'react-native';
 
 export default function App() {
     
     const [buttonPressed, setButtonPressed] = useState(null)
     const [buttonPressString, setButtonPressString] = useState('')
+    const fadeAnim = useRef(new Animated.Value(0)).current
     
-    const handleButtonPress = () => {
-        setButtonPressString('Wow, a button that does something!')
+//    const handleButtonPress = () => {
+//        setButtonPressString('Wow, a button that does something!')
+//    }
+    
+    const fadeIn = () => {
+        Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 5000
+        }).start()
     }
     
     
@@ -24,10 +32,10 @@ export default function App() {
           <Text></Text>
           <Text style={styles.text}>Now, press {'this'} button</Text>
           <Pressable style={styles.button} >
-          <Button style={styles.buttonText} title="Press it..." onPress={handleButtonPress}/>
+          <Button style={styles.buttonText} title="Press it..." onPress={fadeIn}/>
           </Pressable>
           <Text></Text>
-          <Text style={styles.text}>{buttonPressString}</Text>
+          <Animated.Text style={[styles.text, {opacity: fadeAnim}]}>Wow, a button that does something!</Animated.Text>
       <StatusBar style="auto" />
     </View>
     </ScrollView>
@@ -84,8 +92,4 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: .4,
     },
-    buttonText: {
-        fontSize: 10
-    }
-    
 });
